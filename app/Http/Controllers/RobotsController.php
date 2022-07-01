@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Robot;
 
 class RobotsController extends Controller
 {
@@ -13,7 +14,8 @@ class RobotsController extends Controller
      */
     public function index()
     {
-        return view('robots.index');
+        $robots = Robot::all();
+        return view('robots.index', compact('robots'));
     }
 
     /**
@@ -45,7 +47,10 @@ class RobotsController extends Controller
      */
     public function show($id)
     {
-        //
+        $robot = Robot::find($id);
+
+        return view('robots.show', compact('robot'));
+
     }
 
     /**
