@@ -17,10 +17,9 @@ class CreateRobotsTable extends Migration
             $table->id();
             $table->string('name', 100);
             $table->date('production_date');
-            $table->string('height');
-            $table->string('width');
-            $table->integer('robot_id')->unique();
-            $table->boolean('is_Available');
+            $table->text('description');
+            $table->string('robot_id')->unique();
+            $table->boolean('nuke_Available');
             $table->timestamps();
         });
     }
