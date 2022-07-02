@@ -11,7 +11,10 @@
                 <div class="card-body">
                     <h5 class="card-title">ID: <br>{{ $robot->robot_id }}</h5>
                     <p class="card-text">Description: <br>{{ $robot->description }}</p>
-                    <a href="{{ route('robot.index') }}" class="btn btn-primary"><< Back</a>
+                    {{-- AGGIUNGERE RADIO BTN PER NUKE PRESENTE O MENO --}}
+                    <a href="{{ route('robot.index') }}" class="btn btn-success"><< Back</a>
+                    <a href="#" class="btn btn-primary">Edit</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
                 </div>
             </div>
         </div>

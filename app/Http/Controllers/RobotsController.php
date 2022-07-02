@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Robot;
+use Faker\Generator as Faker;
 
 class RobotsController extends Controller
 {
@@ -25,7 +26,7 @@ class RobotsController extends Controller
      */
     public function create()
     {
-        //
+        return view('robots.create');
     }
 
     /**
@@ -34,9 +35,19 @@ class RobotsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Faker $faker)
     {
-        //
+        $new_data = $request->all();
+
+        $new_robot = new Robot();
+
+        $new_robot->robot_id = $faker->regexify('[A-Z]{5}[0-9]{4}');
+
+        $new_robot->fill($new_data);
+
+        $new_robot->save();
+
+        return redirect()->route('robot.index');
     }
 
     /**
@@ -82,8 +93,10 @@ class RobotsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Robot $robot)
     {
-        //
+        $robot->delete();
+
+        return redirect()->route('robot.index');
     }
 }

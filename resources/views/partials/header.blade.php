@@ -14,7 +14,7 @@
                         <a class="nav-link" href="{{ route('robot.index') }}">Catalog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="{{ route('robot.create') }}">Add Prototype</a>
                     </li>
                 </ul>
             </div>
