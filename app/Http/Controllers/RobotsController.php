@@ -47,7 +47,7 @@ class RobotsController extends Controller
 
         $new_robot->save();
 
-        return redirect()->route('robot.index');
+        return redirect()->route('robot.show', $new_robot->id);
     }
 
     /**
@@ -72,7 +72,8 @@ class RobotsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $robot = Robot::find($id);
+        return view('robots.edit', compact('robot'));
     }
 
     /**
@@ -82,9 +83,13 @@ class RobotsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Robot $robot)
     {
-        //
+        $update_robot = $request->all();
+
+        $robot->update($update_robot);
+
+        return redirect()->route('robot.show', $robot->id);
     }
 
     /**

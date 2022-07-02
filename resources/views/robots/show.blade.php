@@ -14,7 +14,11 @@
                     {{-- AGGIUNGERE RADIO BTN PER NUKE PRESENTE O MENO --}}
                     <a href="{{ route('robot.index') }}" class="btn btn-success"><< Back</a>
                     <a href="#" class="btn btn-primary">Edit</a>
-                    <a href="#" class="btn btn-danger">Delete</a>
+                    <form class="d-inline" action="{{ route('robot.destroy' , $robot) }}" method="POST" onsubmit="return confirm('Is this model really obsolete?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>
