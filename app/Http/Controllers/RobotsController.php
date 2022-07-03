@@ -85,11 +85,11 @@ class RobotsController extends Controller
      */
     public function update(Request $request, Robot $robot)
     {
-        $update_robot = $request->all();
+        $new_data = $request->all();
 
-        $robot->update($update_robot);
+        $robot->update($new_data);
 
-        return redirect()->route('robot.show', $robot->id);
+        return redirect()->route('robot.show', $robot);
     }
 
     /**
