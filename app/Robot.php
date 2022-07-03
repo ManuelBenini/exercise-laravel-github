@@ -11,6 +11,7 @@ class Robot extends Model
         'production_date',
         'description',
         'image',
+        'robot_id',
         'nuke_Available'
     ];
 }
