@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Faker\Generator as Faker;
 use App\Robot;
 
 class RobotsTableSeeder extends Seeder
@@ -11,16 +10,21 @@ class RobotsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    // public function run(Faker $faker)
+    public function run()
     {
-        for($i = 0; $i < 25; $i++){
+        $robots = config('robots');
+        foreach ($robots as $robot) {
             $new_robot = new Robot();
-            $new_robot->name = $faker->domainWord();
-            $new_robot->production_date = $faker->date();
-            $new_robot->description = $faker->text(150);
-            $new_robot->robot_id = $faker->regexify('[A-Z]{5}[0-9]{4}');
-            $new_robot->nuke_Available = $faker->boolean();
+            $new_robot->name = $robot->name;
+            $new_robot->production_date = $robot->production_date;
+            $new_robot->description = $robot->description;
+            $new_robot->image = $robot->image;
+            $new_robot->robot_id = $robot->robot_id;
+            $new_robot->nuke_Available = $robot->nuke_Available;
             $new_robot->save();
         }
+        
+
     }
 }

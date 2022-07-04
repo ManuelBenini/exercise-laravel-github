@@ -1,3 +1,4 @@
 <footer>
-    <h2>FOOTER</h2>
+    <hr>
+    <p>FOOTER</p>
 </footer>
