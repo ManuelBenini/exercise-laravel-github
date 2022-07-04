@@ -11,9 +11,15 @@
                 <div class="card-body">
                     <h5 class="card-title">ID: <br>{{ $robot->robot_id }}</h5>
                     <p class="card-text">Description: <br>{{ $robot->description }}</p>
-                    {{-- AGGIUNGERE RADIO BTN PER NUKE PRESENTE O MENO --}}
+
+                    @if($robot->nuke_Available)
+                        <p>A handy-dandy NUKE comes in clutch with this model!</p>
+                    @else
+                        <p>Unfortunately this model does not support a NUKE at the moment.</p>
+                    @endif
+
                     <a href="{{ route('robot.index') }}" class="btn btn-success"><< Back</a>
-                    <a href="#" class="btn btn-primary">Edit</a>
+                    <a href="{{ route('robot.edit', $robot) }}" class="btn btn-primary">Edit</a>
                     <form class="d-inline" action="{{ route('robot.destroy' , $robot) }}" method="POST" onsubmit="return confirm('Is this model really obsolete?')">
                         @csrf
                         @method('DELETE')
